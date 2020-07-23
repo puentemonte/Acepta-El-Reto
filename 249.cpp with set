@@ -1,0 +1,37 @@
+// Autor: zubest
+// Problema: El burro y las alforjas
+
+#include <bits/stdc++.h>
+
+using namespace std;
+// mientras se lee
+// crear un vector bidimensional --> peso y número de apariciones
+// si el número de apariciones no es 0 y es par -> +1 burros
+
+int resolve() {
+	set<int>p;
+	int b, s, ans = 0, i = 0;
+	cin >> b >> s;
+	while (i < s) {
+		int m;
+		cin >> m;
+		// m is in set
+		if (p.count(m) != 0) {
+			++ans;
+			p.erase(m);
+		}
+		else
+			p.insert(m);
+		++i;
+	}
+	return min(ans, b);
+}
+
+int main() {
+	int t;
+	cin >> t;
+	for (int i = 0; i < t; ++i) {
+		cout << resolve() << "\n";
+	}
+	return 0;
+}
